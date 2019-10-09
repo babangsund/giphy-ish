@@ -3,19 +3,11 @@ import React from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
 // project
+import type { Giphy } from '../giphy/GiphyTypes';
 import { formatRelative } from '../utils/datetime';
 
 type Props = {
-  item: {
-    id: string,
-    title: string,
-    create_datetime: string,
-    images: {
-      original: {
-        webp: string,
-      },
-    },
-  },
+  item: Giphy,
 };
 
 const Container = styled.article`

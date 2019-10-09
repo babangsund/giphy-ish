@@ -5,19 +5,11 @@ import styled from 'styled-components';
 // project
 import Item from './Item';
 import type { Ref } from '../utils/types';
+import type { Giphy } from '../giphy/GiphyTypes';
 import { useInfiniteScroll } from '../utils/hooks';
 
 type Props = {
-  items: Array<{
-    id: string,
-    title: string,
-    create_datetime: string,
-    images: {
-      original: {
-        webp: string,
-      },
-    },
-  }>,
+  items: Array<Giphy>,
 };
 
 const Container = styled.div`
