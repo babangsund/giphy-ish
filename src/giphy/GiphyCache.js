@@ -21,7 +21,7 @@ class GiphyCache implements IGiphyCache {
   +_ttl: number;
 
   constructor() {
-    this._ttl = 1000 * 60;
+    this._ttl = 1000 * 60 * 3;
     this._responses = new Map();
   }
 
