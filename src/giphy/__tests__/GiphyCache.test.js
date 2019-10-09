@@ -25,19 +25,20 @@ describe('GiphyCache', () => {
     expect(() => GiphyCache.set(cacheKey, giphyResponse));
   });
 
-  it('Should be able to set null response', () => {
-    expect(() => GiphyCache.set(cacheKey, null));
-  });
-
   it('Should be able to get response', () => {
     GiphyCache.set(cacheKey, giphyResponse);
     expect(GiphyCache.get(cacheKey)).toBe(giphyResponse);
   });
 
+  it('Should be able to set null response', () => {
+    expect(() => GiphyCache.set(cacheKey, null));
+  });
+
   it('Should return null for invalid cache key', () => {
     expect(GiphyCache.get('invalid')).toBe(null);
   });
-  it('Should delete old responses', () => {
+
+  it('Should return null for outdated responses', () => {
     (Date: any).now = jest.fn(() => +new Date('2015-03-25T12:00:00Z'));
     GiphyCache.set(cacheKey, giphyResponse);
     (Date: any).now = jest.fn(() => +new Date('2015-03-25T12:05:00Z'));
