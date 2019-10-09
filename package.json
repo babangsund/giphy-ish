@@ -1,20 +1,17 @@
 {
-  "name": "giphy-ish",
+  "license": "MIT",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+  "name": "giphy-ish",
+  "author": "babangsund",
+  "description": "Giphy. Ish.",
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -27,6 +24,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "3.2.0"
   },
   "devDependencies": {
     "flow-bin": "^0.109.0",
