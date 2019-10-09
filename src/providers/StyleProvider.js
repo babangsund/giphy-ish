@@ -12,9 +12,21 @@ const textColors = {
   black: '#333',
 };
 
+const giphyColors = {
+  cyan: 'rgb(0, 204, 255)',
+  purple: 'rgb(97, 87, 255)',
+  pink: 'rgb(153, 51, 255)',
+  orange: 'rgb(255, 102, 102)',
+};
+
 const theme = {
   textColors,
+  giphyColors,
   backgroundColor: '#121212',
+  getRandomColor: function getRandomColor() {
+    const colorValues = Object.values(this.giphyColors);
+    return colorValues[Math.floor(Math.random() * colorValues.length)];
+  },
 };
 
 const Style = createGlobalStyle`
