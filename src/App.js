@@ -2,6 +2,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// project
+import Search from './components/Search';
+
 const Container = styled.section`
   display: flex;
   margin: 0 auto;
@@ -19,7 +22,9 @@ function App() {
   return (
     <Container>
       <Header>
-        <section>Search</section>
+        <section>
+          <Search />
+        </section>
       </Header>
       <Main>
         <section>List</section>
