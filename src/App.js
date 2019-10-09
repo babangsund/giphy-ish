@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 // project
 import List from './components/List';
+import useGiphy from './giphy/useGiphy';
 import Search from './components/Search';
 
 const Container = styled.section`
@@ -19,40 +20,18 @@ const Header = styled.header`
 
 const Main = styled.main``;
 
-const items = [
-  {
-    id: '1',
-    title: 'New R-Truth GIFs? Interesting...',
-    create_datetime: '2019-08-08',
-    images: {
-      original: {
-        webp: 'https://media3.giphy.com/media/W4jEUHRmp9G1cBCDtV/giphy.webp',
-      },
-    },
-  },
-  {
-    id: '2',
-    title: 'New R-Truth GIFs? Interesting...',
-    create_datetime: '2019-08-08',
-    images: {
-      original: {
-        webp: 'https://media3.giphy.com/media/W4jEUHRmp9G1cBCDtV/giphy.webp',
-      },
-    },
-  },
-];
-
 function App() {
+  const [{ items, isLoading }, fetchQuery, fetchMore] = useGiphy();
   return (
     <Container>
       <Header>
         <section>
-          <Search />
+          <Search onChange={e => fetchQuery(e.target.value)} />
         </section>
       </Header>
       <Main>
         <section>
-          <List items={items} />
+          <List items={items} fetchMore={fetchMore} isLoading={isLoading} />
         </section>
       </Main>
     </Container>

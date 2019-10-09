@@ -57,7 +57,11 @@ const Time = styled.span`
   font-weight: bold;
 `;
 
-const Background = styled.div`
+const Background = styled.div.attrs(p => ({
+  style: {
+    backgroundImage: `url(${p.background})`,
+  },
+}))`
   &::before {
     left: 0px;
     top: -40px;
@@ -96,7 +100,6 @@ const Background = styled.div`
   position: relative;
   background-size: cover;
   background-position: center;
-  background-image: url(${p => p.background});
   text-shadow: rgba(0, 0, 0, 0.25) 0px 2px 10px;
 `;
 
@@ -110,7 +113,7 @@ function Item({ item }: Props) {
         <Background color={color} background={item.images.original.webp}>
           <Text>
             <Title>{item.title}</Title>
-            <Time>{formatRelative(item.create_datetime)}</Time>
+            <Time>{formatRelative(item.import_datetime)}</Time>
           </Text>
         </Background>
         <DropBox level={1} color={color} />

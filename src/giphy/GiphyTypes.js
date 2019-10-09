@@ -3,7 +3,7 @@
 export type Giphy = {
   id: string,
   title: string,
-  create_datetime: string,
+  import_datetime: string,
   images: {
     original: {
       webp: string,
