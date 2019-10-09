@@ -1,16 +1,30 @@
 // @flow
 import React from 'react';
+import styled from 'styled-components';
+
+const Container = styled.section`
+  display: flex;
+  margin: 0 auto;
+  max-width: 935px;
+  flex-direction: column;
+`;
+
+const Header = styled.header`
+  padding: 24px 0;
+`;
+
+const Main = styled.main``;
 
 function App() {
   return (
-    <section>
-      <header>
+    <Container>
+      <Header>
         <section>Search</section>
-      </header>
-      <main>
+      </Header>
+      <Main>
         <section>List</section>
-      </main>
-    </section>
+      </Main>
+    </Container>
   );
 }
 
