@@ -7,6 +7,8 @@ type Props = {
   children?: Node,
 };
 
+const FACTOR = 8;
+
 const textColors = {
   white: '#fff',
   black: '#333',
@@ -23,6 +25,7 @@ const theme = {
   textColors,
   giphyColors,
   backgroundColor: '#121212',
+  factor: (...args) => args.map(x => x * FACTOR + 'px').join(' '),
   getRandomColor: function getRandomColor() {
     const colorValues = Object.values(this.giphyColors);
     return colorValues[Math.floor(Math.random() * colorValues.length)];

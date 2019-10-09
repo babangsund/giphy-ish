@@ -11,30 +11,31 @@ type Props = {};
 
 const Container = styled.div`
   width: 100%;
-  height: 52px;
   display: flex;
   position: relative;
+  height: ${p => p.theme.factor(6)};
 `;
 
 const StyledInput = styled.input`
   width: 100%;
-  padding: 0 12px;
   font-size: 1.125rem;
+  padding: ${p => p.theme.factor(0, 2)};
 `;
 
 const EndAdornment = styled.div`
   top: 50%;
-  right: 24px;
   position: absolute;
   transform: translateY(-50%);
+  right: ${p => p.theme.factor(3)};
 `;
 
 const StyledSearchIcon = styled(({ focus, ...props }) => (
   <SearchIcon {...props} />
 ))`
-  width: 24px;
-  height: 24px;
-  color: ${p => (p.focus ? p.theme.getRandomColor() : 'black')};
+  width: ${p => p.theme.factor(3)};
+  height: ${p => p.theme.factor(3)};
+  color: ${p =>
+    p.focus ? p.theme.getRandomColor() : p.theme.textColors.black};
 `;
 
 function Search(props: Props) {
