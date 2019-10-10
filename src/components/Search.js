@@ -47,6 +47,7 @@ function Search(props: Props) {
         defaultValue=""
         onBlur={onBlur}
         onFocus={onFocus}
+        data-testid="StyledInput"
         placeholder="Search all the GIFs"
         {...props}
       />
