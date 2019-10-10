@@ -1,3 +1,4 @@
+// @flow
 import GiphyClient from '../GiphyClient';
 
 function mockResponse() {
@@ -21,7 +22,7 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe('GiphyCache', () => {
+describe('GiphyClient', () => {
   const client = new GiphyClient();
 
   it('Should send a fetch request', () => {
