@@ -14,7 +14,7 @@ function mockResponse() {
   return response;
 }
 
-beforeEach(() => {
+beforeAll(() => {
   mockResponse();
 });
 
@@ -38,8 +38,9 @@ describe('GiphyClient', () => {
     });
   });
 
-  it('Should set hasMore to false when all data is fetched', async () => {
-    await client.fetchQuery('');
-    expect(client._hasMore).toBe(false);
+  it('Should set hasMore to false when all data is fetched', () => {
+    return client.fetchQuery('').then(_data => {
+      expect(client._hasMore).toBe(false);
+    });
   });
 });

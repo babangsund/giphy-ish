@@ -4,6 +4,26 @@
   "name": "giphy-ish",
   "author": "babangsund",
   "description": "Giphy. Ish.",
+  "homepage": "https://github.com/babangsund/giphy-ish#readme",
+  "bugs": {
+    "url": "https://github.com/babangsund/giphy-ish/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/babangsund/giphy-ish.git"
+  },
+  "keywords": [
+    "jest",
+    "flow",
+    "react",
+    "giphy",
+    "prettier",
+    "giphy-api",
+    "create-react-app",
+    "styled-components",
+    "IntersectionObserver",
+    "react-testing-library"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },

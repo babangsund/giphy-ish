@@ -8,6 +8,7 @@ export function formatRelative(date: Date | string) {
   const day = hour * 24;
   const week = day * 7;
   const month = week * 4;
+  const year = month * 12;
 
   if (delta < minute) return 'Less than a minute ago';
 
@@ -21,5 +22,7 @@ export function formatRelative(date: Date | string) {
 
   if (delta < month) return Math.floor(delta / week) + ' weeks ago';
 
-  return Math.floor(delta / month) + ' months ago';
+  if (delta < year) return Math.floor(delta / month) + ' months ago';
+
+  return Math.floor(delta / year) + ' years ago';
 }
