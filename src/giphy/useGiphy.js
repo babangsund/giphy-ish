@@ -35,7 +35,7 @@ function giphyReducer(state: State, action: Action) {
         ...state,
         isError: false,
         isLoading: false,
-        items: action.items,
+        items: action.items || [],
       };
     default:
       throw new Error(
