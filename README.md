@@ -37,9 +37,9 @@ This project was bootstrapped with [create react app](https://github.com/faceboo
 Additional dependencies have been installed:
 
 1. [**`Prettier`**](https://prettier.io/): Code formatting.
-2. [**`flow-bin`**](https://github.com/facebook/flow): Static type checker.
-3. [**`styled-components`**](https://github.com/styled-components/styled-components): Locally scoped css components.
-3. [**`react-testing-library`**](https://github.com/testing-library/react-testing-library): React DOM testing utility.
+2. [**`Typescript`**](https://github.com/microsoft/typeScript): Static type checker, etc.
+3. [**`Styled-components`**](https://github.com/styled-components/styled-components): Locally scoped css components.
+3. [**`React-testing-library`**](https://github.com/testing-library/react-testing-library): React DOM testing utility.
 
 #### Directories
 
