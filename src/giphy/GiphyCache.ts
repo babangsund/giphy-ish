@@ -1,31 +1,29 @@
-// @flow
-
 // project
-import type { GiphyResponse } from './GiphyTypes';
+import { GiphyResponse } from './GiphyTypes';
 
-type CachedResponse = {|
-  time: number,
-  response: ?GiphyResponse,
-|};
+type CachedResponse = {
+  time: number;
+  response: GiphyResponse | null;
+};
 
-interface IGiphyCache {
+interface GiphyCache {
   _responses: Map<string, CachedResponse>;
-  +_ttl: number;
+  _ttl: number;
 
-  get(string): ?GiphyResponse;
-  set(string, ?GiphyResponse): void;
+  get(url: string): GiphyResponse | null;
+  set(url: string, response: GiphyResponse | null): void;
 }
 
-class GiphyCache implements IGiphyCache {
+class GiphyCache implements GiphyCache {
   _responses: Map<string, CachedResponse>;
-  +_ttl: number;
+  _ttl: number;
 
   constructor() {
     this._ttl = 1000 * 60 * 3;
     this._responses = new Map();
   }
 
-  get(url: string) {
+  get(url: string): GiphyResponse | null {
     const now = Date.now();
 
     this._responses.forEach((response, cacheKey) => {
@@ -38,7 +36,7 @@ class GiphyCache implements IGiphyCache {
     return response ? response.response : null;
   }
 
-  set(url: string, response: ?GiphyResponse) {
+  set(url: string, response: GiphyResponse | null): void {
     const time = Date.now();
 
     this._responses.delete(url);

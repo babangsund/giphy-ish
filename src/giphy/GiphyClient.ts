@@ -1,22 +1,20 @@
-// @flow
-
 // project
 import GiphyCache from './GiphyCache';
-import type { Giphy } from './GiphyTypes';
+import { Giphy, GiphyResponse } from './GiphyTypes';
 import { API_KEY, BASE_URL_GIPHY } from '../Constants';
 
-interface IGiphyClient {
+interface GiphyClient {
   _query: string;
   _first: number;
   _after: number;
   _hasMore: boolean;
   _data: Array<Giphy>;
 
-  fetchQuery(string): Promise<Array<Giphy>>;
+  fetchQuery(query: string): Promise<Array<Giphy>>;
   fetchMore(): Promise<Array<Giphy>>;
 }
 
-class GiphyClient implements IGiphyClient {
+class GiphyClient implements GiphyClient {
   _data: Array<Giphy>;
   _query: string;
   _first: number;
@@ -34,7 +32,7 @@ class GiphyClient implements IGiphyClient {
   /**
    * Public method for fetching gifs with a query parameter.
    */
-  async fetchQuery(query: string) {
+  async fetchQuery(query: string): Promise<Array<Giphy>> {
     this._query = query;
     this._after = 0;
     this._data = [];
@@ -47,7 +45,7 @@ class GiphyClient implements IGiphyClient {
    * Public method for fetching more gifs,
    * using pagination and caching to normalize the response.
    */
-  async fetchMore() {
+  async fetchMore(): Promise<Array<Giphy>> {
     if (!this._hasMore) return this._data;
     this._after += this._first;
 
@@ -55,7 +53,7 @@ class GiphyClient implements IGiphyClient {
     return this._data;
   }
 
-  async _getData() {
+  async _getData(): Promise<Array<Giphy>> {
     const queryBefore = this._query.slice();
     const request = this._maybeFetch();
     const response = await request;
@@ -74,7 +72,7 @@ class GiphyClient implements IGiphyClient {
     return this._data;
   }
 
-  async _maybeFetch() {
+  async _maybeFetch(): Promise<GiphyResponse> {
     const url = this._giphyUrl();
 
     const cachedResponse = GiphyCache.get(url);
@@ -84,7 +82,7 @@ class GiphyClient implements IGiphyClient {
     return serverResponse;
   }
 
-  async _doFetch() {
+  async _doFetch(): Promise<GiphyResponse> {
     const url = this._giphyUrl();
     let serverResponse;
 
@@ -99,7 +97,7 @@ class GiphyClient implements IGiphyClient {
     return serverResponse;
   }
 
-  _giphyUrl() {
+  _giphyUrl(): string {
     const { _query, _first, _after } = this;
     return [
       BASE_URL_GIPHY,

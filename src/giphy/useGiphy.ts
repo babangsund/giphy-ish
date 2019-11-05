@@ -1,22 +1,23 @@
-// @flow
 import React from 'react';
+import { Cancelable } from 'lodash';
 import throttle from 'lodash/throttle';
 
 // project
+import { Giphy } from './GiphyTypes';
 import GiphyClient from './GiphyClient';
-import type { Giphy } from './GiphyTypes';
 
 type Action = {
-  items?: Array<Giphy>,
-  type: 'Fetch' | 'Success' | 'Error',
+  items?: Array<Giphy>;
+  type: 'Fetch' | 'Success' | 'Error';
 };
 
 type State = {
-  items: Array<Giphy>,
-  isLoading: boolean,
+  isError: boolean;
+  items: Array<Giphy>;
+  isLoading: boolean;
 };
 
-function giphyReducer(state: State, action: Action) {
+function giphyReducer(state: State, action: Action): State {
   switch (action.type) {
     case 'Fetch':
       return {
@@ -44,7 +45,7 @@ function giphyReducer(state: State, action: Action) {
   }
 }
 
-function useGiphy() {
+function useGiphy(): [State, ((url: string) => void) & Cancelable, () => void] {
   const client = React.useRef(new GiphyClient());
 
   const [state, dispatch] = React.useReducer(giphyReducer, {
