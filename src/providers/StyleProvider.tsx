@@ -1,10 +1,12 @@
-// @flow
 import React from 'react';
-import type { Node } from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import {
+  DefaultTheme,
+  ThemeProvider,
+  createGlobalStyle,
+} from 'styled-components';
 
 type Props = {
-  children?: Node,
+  children?: React.ReactChild;
 };
 
 const FACTOR = 8;
@@ -21,11 +23,11 @@ const giphyColors = {
   orange: 'rgb(255, 102, 102)',
 };
 
-const theme = {
+const theme: DefaultTheme = {
   textColors,
   giphyColors,
   backgroundColor: '#121212',
-  factor: (...args) => args.map(x => x * FACTOR + 'px').join(' '),
+  factor: (...args: number[]) => args.map(x => x * FACTOR + 'px').join(' '),
   getRandomColor: function getRandomColor() {
     const colorValues = Object.values(this.giphyColors);
     return colorValues[Math.floor(Math.random() * colorValues.length)];
@@ -45,13 +47,15 @@ const Style = createGlobalStyle`
   }
 `;
 
-function StyleProvider({ children }: Props) {
+const StyleProvider: React.FC<Props> = ({ children }: Props) => {
   return (
     <ThemeProvider theme={theme}>
-      <Style />
-      {children}
+      <>
+        <Style />
+        {children}
+      </>
     </ThemeProvider>
   );
-}
+};
 
 export default StyleProvider;
