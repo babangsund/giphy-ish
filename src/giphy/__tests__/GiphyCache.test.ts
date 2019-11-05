@@ -1,4 +1,3 @@
-// @flow
 import GiphyCache from '../GiphyCache';
 
 describe('GiphyCache', () => {
@@ -39,9 +38,9 @@ describe('GiphyCache', () => {
   });
 
   it('Should return null for outdated responses', () => {
-    (Date: any).now = jest.fn(() => +new Date('2015-03-25T12:00:00Z'));
+    Date.now = jest.fn(() => +new Date('2015-03-25T12:00:00Z'));
     GiphyCache.set(cacheKey, giphyResponse);
-    (Date: any).now = jest.fn(() => +new Date('2015-03-25T12:05:00Z'));
+    Date.now = jest.fn(() => +new Date('2015-03-25T12:05:00Z'));
     expect(GiphyCache.get(cacheKey)).toBe(null);
   });
 });

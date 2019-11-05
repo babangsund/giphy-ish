@@ -14,11 +14,11 @@
   },
   "keywords": [
     "jest",
-    "flow",
     "react",
     "giphy",
     "prettier",
     "giphy-api",
+    "typescript",
     "create-react-app",
     "styled-components",
     "IntersectionObserver",
@@ -66,7 +66,6 @@
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.2.0",
-    "flow-bin": "^0.111.1",
     "prettier": "^1.18.2",
     "typescript": "^3.7.2"
   }

@@ -1,7 +1,11 @@
-// @flow
 import GiphyClient from '../GiphyClient';
 
-function mockResponse() {
+type Response = {
+  data: Array<{ id: string }>;
+  pagination: { total_count: number };
+};
+
+function mockResponse(): Response {
   const response = {
     data: [{ id: '1' }],
     pagination: { total_count: 1 },
@@ -39,7 +43,7 @@ describe('GiphyClient', () => {
   });
 
   it('Should set hasMore to false when all data is fetched', () => {
-    return client.fetchQuery('').then(_data => {
+    return client.fetchQuery('').then(() => {
       expect(client._hasMore).toBe(false);
     });
   });

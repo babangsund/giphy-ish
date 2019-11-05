@@ -14,6 +14,7 @@ type DropBoxProps = {
 };
 
 type BackgroundProps = {
+  color: string;
   background: string;
 };
 
@@ -68,7 +69,7 @@ const Background = styled.div.attrs<BackgroundProps>(p => ({
   style: {
     backgroundImage: `url(${p.background})`,
   },
-}))`
+}))<BackgroundProps>`
   &::before {
     left: 0px;
     top: -40px;

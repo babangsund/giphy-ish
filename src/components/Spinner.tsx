@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 
 type SpinnerProps = {
-  size: number;
+  size?: number;
 };
 
 const rotate = keyframes`

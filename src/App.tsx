@@ -27,7 +27,9 @@ const App: React.FC<Props> = () => {
     <Container>
       <Header>
         <section>
-          <Search onChange={e => fetchQuery(e.target.value)} />
+          <Search
+            onChange={e => fetchQuery((e.target as HTMLInputElement).value)}
+          />
         </section>
       </Header>
       <Main>

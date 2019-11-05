@@ -10,7 +10,9 @@ type StyledSearchIconProps = {
   focus: boolean;
 };
 
-type Props = {};
+type Props = {
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+};
 
 const Container = styled.div`
   width: 100%;
