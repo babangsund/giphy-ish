@@ -1,18 +1,16 @@
-// @flow
 import React from 'react';
 import styled from 'styled-components';
 
 // project
 import Item from './Item';
 import Spinner from './Spinner';
-import type { Ref } from '../utils/types';
-import type { Giphy } from '../giphy/GiphyTypes';
+import { Giphy } from '../giphy/GiphyTypes';
 import { useInfiniteScroll } from '../utils/hooks';
 
 type Props = {
-  isLoading: boolean,
-  items: Array<Giphy>,
-  fetchMore: void => void,
+  isLoading: boolean;
+  items: Array<Giphy>;
+  fetchMore: () => void;
 };
 
 const Container = styled.div`
@@ -33,8 +31,8 @@ const TriggerElement = styled.div`
   position: absolute;
 `;
 
-function List({ items = [], fetchMore, isLoading }: Props) {
-  const bottomRef: Ref = React.useRef(null);
+const List: React.FC<Props> = ({ items = [], fetchMore, isLoading }: Props) => {
+  const bottomRef = React.useRef<HTMLDivElement>(null);
   useInfiniteScroll(bottomRef, fetchMore);
 
   return (
@@ -50,6 +48,6 @@ function List({ items = [], fetchMore, isLoading }: Props) {
       )}
     </Container>
   );
-}
+};
 
 export default List;

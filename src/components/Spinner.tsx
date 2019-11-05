@@ -1,5 +1,8 @@
-// @flow
 import styled, { css, keyframes } from 'styled-components';
+
+type SpinnerProps = {
+  size: number;
+};
 
 const rotate = keyframes`
     to {
@@ -7,7 +10,7 @@ const rotate = keyframes`
     }
 `;
 
-const Spinner = styled.div`
+const Spinner = styled.div<SpinnerProps>`
   &::before {
     top: 50%;
     left: 50%;

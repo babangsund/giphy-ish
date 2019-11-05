@@ -1,13 +1,20 @@
-// @flow
 import React from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
 // project
-import type { Giphy } from '../giphy/GiphyTypes';
+import { Giphy } from '../giphy/GiphyTypes';
 import { formatRelative } from '../utils/datetime';
 
 type Props = {
-  item: Giphy,
+  item: Giphy;
+};
+
+type DropBoxProps = {
+  level: number;
+};
+
+type BackgroundProps = {
+  background: string;
 };
 
 const Container = styled.article`
@@ -18,7 +25,7 @@ const Container = styled.article`
   margin-bottom: ${p => p.theme.factor(6)};
 `;
 
-const DropBox = styled.div`
+const DropBox = styled.div<DropBoxProps>`
   background-color: ${p => p.color};
   height: ${p => p.theme.factor(0.5)};
   margin: 0 ${p => 8 * p.level - 8}px;
@@ -57,7 +64,7 @@ const Time = styled.span`
   font-weight: bold;
 `;
 
-const Background = styled.div.attrs(p => ({
+const Background = styled.div.attrs<BackgroundProps>(p => ({
   style: {
     backgroundImage: `url(${p.background})`,
   },
@@ -103,7 +110,7 @@ const Background = styled.div.attrs(p => ({
   text-shadow: rgba(0, 0, 0, 0.25) 0px 2px 10px;
 `;
 
-function Item({ item }: Props) {
+const Item: React.FC<Props> = ({ item }: Props) => {
   const theme = React.useContext(ThemeContext);
   const color = theme.getRandomColor();
 
@@ -122,6 +129,6 @@ function Item({ item }: Props) {
       </Absolute>
     </Container>
   );
-}
+};
 
 export default Item;
