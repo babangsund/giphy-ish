@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -6,6 +5,10 @@ import styled from 'styled-components';
 import { useBool } from '../utils/hooks';
 // $FlowFixMe
 import { ReactComponent as SearchIcon } from '../icons/search.svg';
+
+type StyledSearchIconProps = {
+  focus: boolean;
+};
 
 type Props = {};
 
@@ -29,16 +32,16 @@ const EndAdornment = styled.div`
   right: ${p => p.theme.factor(3)};
 `;
 
-const StyledSearchIcon = styled(({ focus, ...props }) => (
-  <SearchIcon {...props} />
-))`
+const StyledSearchIcon = styled(
+  ({ focus, ...props }: StyledSearchIconProps) => <SearchIcon {...props} />
+)<StyledSearchIconProps>`
   width: ${p => p.theme.factor(3)};
   height: ${p => p.theme.factor(3)};
   color: ${p =>
     p.focus ? p.theme.getRandomColor() : p.theme.textColors.black};
 `;
 
-function Search(props: Props) {
+const Search: React.FC<Props> = (props: Props) => {
   const [focus, onFocus, onBlur] = useBool();
   return (
     <Container>
@@ -56,6 +59,6 @@ function Search(props: Props) {
       </EndAdornment>
     </Container>
   );
-}
+};
 
 export default Search;

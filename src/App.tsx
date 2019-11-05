@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -6,6 +5,8 @@ import styled from 'styled-components';
 import List from './components/List';
 import useGiphy from './giphy/useGiphy';
 import Search from './components/Search';
+
+type Props = {};
 
 const Container = styled.section`
   display: flex;
@@ -20,7 +21,7 @@ const Header = styled.header`
 
 const Main = styled.main``;
 
-function App() {
+const App: React.FC<Props> = () => {
   const [{ items, isLoading }, fetchQuery, fetchMore] = useGiphy();
   return (
     <Container>
@@ -36,6 +37,6 @@ function App() {
       </Main>
     </Container>
   );
-}
+};
 
 export default App;
