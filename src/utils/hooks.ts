@@ -1,10 +1,10 @@
-// @flow
 import React from 'react';
 
-// project
-import type { Ref } from './types';
+type OnTrigger = () => void;
 
-export function useBool(initialBool: boolean = false) {
+export function useBool(
+  initialBool = false
+): [boolean, () => void, () => void] {
   const [bool, setBool] = React.useState(initialBool);
   return [
     bool,
@@ -13,12 +13,15 @@ export function useBool(initialBool: boolean = false) {
   ];
 }
 
-export function useInfiniteScroll(triggerRef: Ref, onTrigger: void => void) {
-  const observer = React.useRef(null);
-  const prevY = React.useRef(null);
+export function useInfiniteScroll(
+  triggerRef: React.RefObject<HTMLElement>,
+  onTrigger: OnTrigger
+): void {
+  const observer = React.useRef<IntersectionObserver | null>(null);
+  const prevY = React.useRef<number | null>(null);
 
   React.useLayoutEffect(() => {
-    function callback(entities) {
+    function callback(entities: IntersectionObserverEntry[]): void {
       const nextY = entities[0].boundingClientRect.y;
 
       if (prevY.current !== null && prevY.current > nextY) {

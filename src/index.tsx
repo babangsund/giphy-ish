@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import { render } from 'react-dom';
 
@@ -7,7 +6,7 @@ import App from './App';
 import Providers from './providers/Providers';
 import * as serviceWorker from './serviceWorker';
 
-const root: ?HTMLElement = document.getElementById('root');
+const root: HTMLElement | null = document.getElementById('root');
 const element = (
   <Providers>
     <App />
